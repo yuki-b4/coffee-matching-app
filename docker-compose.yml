@@ -1,0 +1,38 @@
+services:
+  db:
+    tty: true
+    image: mysql:8.0.20
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: coffee
+      MYSQL_PASSWORD: password
+    ports:
+      - 4306:3306
+    volumes:
+      - mysql-db:/var/lib/mysql
+  graphql:
+    tty: true
+    depends_on:
+      - db
+    build:
+      context: ./graphql/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./graphql:/usr/src/app
+    # command: "yarn start"
+  front:
+    tty: true
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
+    volumes:
+      - ./front:/usr/src/app
+    command: "yarn dev"
+    ports:
+      - "8000:3000"
+volumes:
+  mysql-db:
+    driver: local

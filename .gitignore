@@ -1,0 +1,73 @@
+# compiled output
+/graphql/dist
+/graphql/node_modules
+
+# Logs
+/graphql/logs
+/graphql/*.log
+/graphql/npm-debug.log*
+/graphql/pnpm-debug.log*
+/graphql/yarn-debug.log*
+/graphql/yarn-error.log*
+/graphql/lerna-debug.log*
+
+# OS
+/graphql/.DS_Store
+
+# Tests
+/graphql/coverage
+/graphql/.nyc_output
+
+# IDEs and editors
+/graphql//.idea
+/graphql/.project
+/graphql/.classpath
+/graphql/.c9/
+/graphql/*.launch
+/graphql/.settings/
+/graphql/*.sublime-workspace
+
+# IDE - VSCode
+/graphql/.vscode/*
+/graphql/!.vscode/settings.json
+/graphql/!.vscode/tasks.json
+/graphql/!.vscode/launch.json
+/graphql/!.vscode/extensions.json
+
+
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/front/node_modules
+/front/.pnp
+/front/.pnp.js
+
+# testing
+/front/coverage
+
+# next.js
+/front/.next/
+/front/out/
+
+# production
+/front/build
+
+# misc
+/front/.DS_Store
+/front/*.pem
+
+# debug
+/front/npm-debug.log*
+/front/yarn-debug.log*
+/front/yarn-error.log*
+/front/.pnpm-debug.log*
+
+# local env files
+/front/.env*.local
+
+# vercel
+/front/.vercel
+
+# typescript
+/front/*.tsbuildinfo
