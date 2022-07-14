@@ -1,3 +1,8 @@
+.env
+
+#######################
+#        graphql      #
+#######################
 # compiled output
 /graphql/dist
 /graphql/node_modules
@@ -34,10 +39,13 @@
 /graphql/!.vscode/launch.json
 /graphql/!.vscode/extensions.json
 
+/graphql/src/@generated
+/graphql/.env
 
 
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+#######################
+#        front        #
+#######################
 # dependencies
 /front/node_modules
 /front/.pnp
