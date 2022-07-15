@@ -4,9 +4,9 @@ services:
     image: mysql:8.0.20
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: coffee
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - 4306:3306
     volumes:
@@ -20,9 +20,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+      - 5555:5555
     volumes:
       - ./graphql:/usr/src/app
-    # command: "yarn start"
+    command: "yarn start:dev"
   front:
     tty: true
     build:
