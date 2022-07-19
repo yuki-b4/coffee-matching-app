@@ -1,6 +1,5 @@
 # /bin/bash
 
-# 作成中
 if [ $# -eq 0 ];then
     echo "Argument error"
     echo "Pass the password"
