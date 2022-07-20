@@ -23,12 +23,9 @@ http://localhost:3000/graphql
 ブラウザで DB を操作する
 
 ```
-docker-compose exec graphql sh
-npx prisma studio
+make prisma-studio
 ```
 
 ### prisma studio
 
 http://localhost:5555
-
-TODO::コマンド一つで prisma studio 立ち上げられるようにする
