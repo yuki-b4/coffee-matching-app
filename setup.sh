@@ -1,6 +1,5 @@
 # /bin/bash
 
-# 作成中
 if [ $# -eq 0 ];then
     echo "Argument error"
     echo "Pass the password"
@@ -15,5 +14,6 @@ docker-compose build
 docker-compose run front yarn
 docker-compose run graphql yarn
 docker-compose run graphql npx prisma generate
+docker-compose run graphql npx prisma migrate dev --name init
 docker-compose down
 docker-compose up -d
