@@ -15,5 +15,5 @@ docker-compose build
 docker-compose run front yarn
 docker-compose run graphql yarn
 docker-compose run graphql npx prisma generate
-docker-compsoe down
+docker-compose down
 docker-compose up -d
