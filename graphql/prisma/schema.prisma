@@ -16,9 +16,99 @@ generator nestgraphql {
     output = "../src/@generated/prisma-nestjs-graphql"
 }
 
-// 環境構築テスト用
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id                    Int             @id @default(autoincrement())
+  name                  String          @db.VarChar(255)
+  user_type             UserType        @default(GENERAL_USER)
+  email                 String          @unique
+  password              String
+  icon_url              String
+  publishing_setting    PublishingSetting
+  address               String
+  roast_level           RoastLevel?
+  user_company_belong   UserCompanyBelong?
+  recipes               Recipe[]
+}
+
+enum UserType {
+  GENERAL_USER
+  COMPANY_USER
+}
+
+enum PublishingSetting {
+  OPEN
+  ONLY_COMPANY_USER
+  CLOSE
+}
+
+
+model Company {
+  id                    Int             @id @default(autoincrement())
+  name                  String          @db.VarChar(255)
+  profile               String
+  logo_url              String
+  company_url           String
+  address               String
+  phone_number          Int
+  business              Int
+  employee_token        String
+  user_company_belong   UserCompanyBelong?
+}
+
+model UserCompanyBelong {
+  id                    Int             @id @default(autoincrement())
+  user                  User            @relation(fields: [user_id], references: [id])
+  user_id               Int             @unique
+  company               Company         @relation(fields: [company_id], references: [id])
+  company_id            Int             @unique
+}
+
+model Recipe {
+  id                    Int             @id @default(autoincrement())
+  enabled               Boolean
+  title_name            String
+  taste_comment         String
+  rate                  Int
+  view_count            Int
+  grind_level           Int
+  coffee_water_rate     String
+  water_temperature     Int
+  dripper_name          String
+  brew_time             DateTime        @db.Time(0)
+  media_url             String
+  origin_story          String
+  distribution_channel  String
+  roast_date            DateTime        @db.Date
+  water_description     String
+  grinder               String
+  user                  User            @relation(fields: [user_id], references: [id])
+  user_id               Int
+  coffee                Coffee          @relation(fields: [coffee_id], references: [id])
+  coffee_id             Int             @unique
+}
+
+model Coffee {
+  id                    Int             @id @default(autoincrement())
+  region                String
+  variety               String
+  processing            Int
+  recipe                Recipe?
+  roast_level           RoastLevel?
+}
+
+model RoastLevel {
+  id                    Int             @id @default(autoincrement())
+  level                 Level
+  user                  User            @relation(fields: [user_id], references: [id])
+  user_id               Int             @unique
+  coffee                Coffee          @relation(fields: [coffee_id], references: [id])
+  coffee_id             Int             @unique
+}
+
+enum Level {
+  LIGHT_ROASTED
+  MEDIUM_LIGHT_ROASTED
+  MEDIUM_ROASTED
+  MEDIUM_DARK_ROASTED
+  DARK_ROASTED
 }
