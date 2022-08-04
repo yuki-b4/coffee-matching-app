@@ -82,7 +82,7 @@ model Recipe {
   water_description     String
   grinder               String
   user                  User            @relation(fields: [user_id], references: [id])
-  user_id               Int
+  // user_id               Int
   coffee                Coffee          @relation(fields: [coffee_id], references: [id])
   coffee_id             Int             @unique
 }
