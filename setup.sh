@@ -9,7 +9,7 @@ PASSWORD=$1
 touch .env
 touch ./graphql/.env
 echo "DB_PASSWORD=${PASSWORD}" > .env
-echo "DATABASE_URL=\"mysql://root:${PASSWORD}@db:3306/coffee\"" > ./graphql/.env
+echo "DATABASE_URL=\"mysql://root:${PASSWORD}@db:3306/coffee?connect_timeout=300\"" > ./graphql/.env
 docker-compose build
 docker-compose run front yarn
 docker-compose run graphql yarn
